@@ -42,13 +42,49 @@ def jsonifyReddit():
 
 @app.route('/reindex/reddit')
 def reindexReddit():
+    es.indices.delete(index='reddit')
+
+    mapping = {
+        "settings": {
+            "number_of_shards": 1,
+            "number_of_replicas": 1
+        },
+        "mappings": {
+            "properties": {
+                "title": {
+                    "type": "text"
+                },
+                "score": {
+                    "type": "integer"
+                },
+                "subreddit": {
+                    "type": "text"
+                },
+                "url": {
+                    "type": "text"
+                },
+                "num_comments": {
+                    "type": "integer"
+                },
+                "body": {
+                    "type": "text"
+                },
+                "date": {
+                    "type": "date",
+                    "format": "yyyy-MM-dd HH:mm:ss"
+                }
+            }
+        }
+    }
+
+    response = es.indices.create(index="reddit", body=mapping)
+
     jsonFile = open("/root/reddit.json", 'r').read()
     data = jsonFile.splitlines(True)
     i = 0
     json_str = ""
     docs = {}
     for line in data:
-        line = ''.join(line.split())
         regex_txt = "\"[0-9]+\":"
         if re.search(regex_txt, line) or re.search("{", line):
             pass
