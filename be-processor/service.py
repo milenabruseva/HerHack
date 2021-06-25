@@ -50,10 +50,10 @@ def reindexReddit():
     for line in data:
         line = ''.join(line.split())
         regex_txt = "\"[0-9]+\":"
-        if re.search(regex_txt, line) or line == "{":
+        if re.search(regex_txt, line) or re.search("{", line):
             pass
         else:
-            if line != "},":
+            if not re.search("},", line):
                 json_str = json_str + line
             else:
                 docs[i] = "{" + json_str + "}"
