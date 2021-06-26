@@ -159,8 +159,6 @@ def sentiment():
             }
         }
 
-    nltk.downloader.download('vader_lexicon')
-
     response = es.search(index="reddit", body=query)
 
     results = []
