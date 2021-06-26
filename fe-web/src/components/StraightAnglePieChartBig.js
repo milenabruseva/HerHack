@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
-import { PieChart, Pie, Tooltip } from 'recharts'
+import { PieChart, Pie, Tooltip, Legend } from 'recharts'
 
-export default class StraightAnglePieChart extends PureComponent {
+export default class StraightAnglePieChartBig extends PureComponent {
     render() {
         return (
-            <PieChart width={150} height={150}>
+            <PieChart width={400} height={400}>
                 <Pie
                     dataKey="value"
                     startAngle={180}
@@ -12,11 +12,12 @@ export default class StraightAnglePieChart extends PureComponent {
                     data={this.props.data}
                     cx="50%"
                     cy="50%"
-                    outerRadius={30}
+                    outerRadius={80}
                     fill="#8884d8"
-                    label="name"
+                    label
                 />
                 <Tooltip />
+                <Legend />
             </PieChart>
         )
     }
