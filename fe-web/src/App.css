@@ -1,0 +1,26 @@
+.App {
+    /* text-align: center; */
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+main {
+    margin-top: 8rem;
+}
+
+.logo {
+    width: 5rem;
+    height: 5rem;
+}
+
+.graph {
+    margin-top: 6rem;
+}
+
+.nav-list {
+    display: flex;
+}
