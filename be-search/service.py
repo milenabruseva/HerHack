@@ -33,6 +33,7 @@ def search():
     endDate = request.args.get('enddate', default=date_time, type=str)
     minScore = request.args.get('minscore', default=0, type=int)
     minComments = request.args.get('mincomments', default=0, type=int)
+    interval = request.args.get('interval', default="day", type=str)
 
     if subredditFilter != None:
         query = {
@@ -54,6 +55,11 @@ def search():
                         {"range": {"num_comments": {"gte": minComments}}}
                     ]
                 }
+            },
+            "aggs": {
+                "upvotes_stats": {"extended_stats": {"field": "score"}},
+                "comments_stats": {"extended_stats": {"field": "num_comments"}},
+                "date_histogram": {"date_histogram": {"field": "date", "interval": interval}}
             }
         }
     else:
@@ -75,6 +81,11 @@ def search():
                         {"range": {"num_comments": {"gte": minComments}}}
                     ]
                 }
+            },
+            "aggs": {
+                "upvotes_stats": {"extended_stats": {"field": "score"}},
+                "comments_stats": {"extended_stats": {"field": "num_comments"}},
+                "date_histogram": {"date_histogram": {"field": "date", "interval": interval}}
             }
         }
 
