@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css'
 import AppBar from './components/AppBar'
-import { Box, CssBaseline } from '@material-ui/core'
+import { CssBaseline } from '@material-ui/core'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 
 import Home from './components/Home/Home'
@@ -16,24 +16,24 @@ function App() {
         },
     })
     return (
-        <MuiThemeProvider theme={theme}>
-            <CssBaseline />
-            <div className="App">
-                <header className="header">
-                    <AppBar />
-                </header>
-                <BrowserRouter>
+        <BrowserRouter>
+            <MuiThemeProvider theme={theme}>
+                <CssBaseline />
+                <div className="App">
+                    <header className="header">
+                        <AppBar />
+                    </header>
                     <Switch>
-                        <Route path="/watchlist">
+                        <Route path="/watchlist" component={AppBar}>
                             <Watchlist />
                         </Route>
-                        <Route path="/">
+                        <Route path="/" component={AppBar}>
                             <Home />
                         </Route>
                     </Switch>
-                </BrowserRouter>
-            </div>
-        </MuiThemeProvider>
+                </div>
+            </MuiThemeProvider>
+        </BrowserRouter>
     )
 }
 
