@@ -15,7 +15,7 @@ with a Social Media Aggregator. Aggregating capital market related information p
                 <ul>
                     <li><b>Astrid Varga</b>: Web Developer</li>
                     <li><b>Barbara Treusch</b>: Reporting and Accounting Expert</li>
-                    <li><b>Canan Cengel</b>: Designer</li>
+                    <li><b>Canan Cengel</b>: Multifaceted Designer</li>
                     <li><b>Gemma Vinolas</b>: Digital Product Manager</li>
                     <li><b>Milena Bruseva</b>: Systems Architect and Backend Engineer</li>
                 </ul>
