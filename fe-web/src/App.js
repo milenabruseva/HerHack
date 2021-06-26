@@ -1,10 +1,11 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css'
 import AppBar from './components/AppBar'
-import { CssBaseline } from '@material-ui/core'
+import { Card, CssBaseline } from '@material-ui/core'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 
 import Home from './components/Home/Home'
+import StockDetails from './components/StockDetails/StockDetails'
 import Watchlist from './components/Watchlist/Watchlist'
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
                     <Switch>
                         <Route path="/watchlist" component={AppBar}>
                             <Watchlist />
+                        </Route>
+                        <Route path="/stock/:id" component={Card}>
+                            <StockDetails />
                         </Route>
                         <Route path="/" component={AppBar}>
                             <Home />
