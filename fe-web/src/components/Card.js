@@ -16,8 +16,10 @@ const useStyles = makeStyles({
         minWidth: 275,
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
         width: '80%',
+        paddingTop: '21px',
+        alignItems: 'center',
     },
     bullet: {
         display: 'inline-block',
