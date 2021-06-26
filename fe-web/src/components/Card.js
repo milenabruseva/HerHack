@@ -6,6 +6,8 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
+import StraightAnglePieChart from './StraightAnglePieChart'
+
 import { getSentiment } from '../services/sentiment'
 
 const useStyles = makeStyles({
@@ -31,11 +33,17 @@ const useStyles = makeStyles({
 
 export default function SimpleCard(props) {
     const classes = useStyles()
+
     const [sentiment, setSentiment] = useState([])
     useEffect(() => {
         let mounted = true
         getSentiment(props.stock).then((sentiment) => {
             if (mounted) {
+                // keys = Object.keys(sentiment)
+                // values = Object.values(sentiment)
+                // sentiment = keys.map((x, i) => {
+                //     return { name: x, value: parseFloat(values[i].toFixed(2)) }
+                // })
                 setSentiment(sentiment)
             }
         })
@@ -70,19 +78,8 @@ export default function SimpleCard(props) {
                 >
                     Sentiment
                 </Typography>
-                <Typography variant="h5" component="h2">
-                    Compound: {sentiment.compound}
-                </Typography>
-                <Typography variant="h5" component="h2">
-                    Negative: {sentiment.negative}
-                </Typography>
-                <Typography variant="h5" component="h2">
-                    Neutral: {sentiment.neutral}
-                </Typography>
-                <Typography variant="h5" component="h2">
-                    Positive: {sentiment.positive}
-                </Typography>
             </CardContent>
+            <StraightAnglePieChart />
         </Card>
     )
 }
